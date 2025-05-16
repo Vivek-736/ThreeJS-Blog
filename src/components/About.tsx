@@ -61,7 +61,7 @@ const About = () => {
               <p className="grid-subtext">
                 Based in India, but available for remote opportunities worldwide. Let’s build something impactful together.
               </p>
-              <Button name="Contact Me" isBeam containerClass="w-full mt-10" />
+              <Button name="Live" isBeam containerClass="w-full mt-10" />
             </div>
           </div>
         </div>
