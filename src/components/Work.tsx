@@ -1,6 +1,13 @@
+import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import CanvasLoader from "./CanvasLoader";
+import Developer from "./Developer";
+import { useState } from "react";
 
 const Work = () => {
+  const [animationName, setAnimationName] = useState("idle");
+
   return (
     <section className="c-space my-20" id="work">
       <div className="w-full text-white">
@@ -8,7 +15,17 @@ const Work = () => {
         <div className="work-container">
           <div className="work-canvas">
             <Canvas>
-
+              <ambientLight intensity={7} />
+              <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+              <directionalLight position={[10, 10, 10]} intensity={1} />
+              <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
+              <Suspense fallback={<CanvasLoader />}>
+                <Developer
+                  position-y={-3}
+                  scale={3}
+                  animationName={animationName}
+                />
+              </Suspense>
             </Canvas>
           </div>
           <div className="work-content">
@@ -34,8 +51,7 @@ const Work = () => {
                 creatively.
               </p>
 
-              <div className="space-y-4">
-                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition">
+              <div className="space-y-4 cursor-pointer" onClick={() => setAnimationName("salute")}>               <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition">
                   <h3 className="text-2xl font-semibold text-pink-400">
                     ❤️ Lovable Clone
                   </h3>
@@ -46,7 +62,7 @@ const Work = () => {
                   </p>
                 </div>
 
-                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition">
+                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition cursor-pointer" onClick={() => setAnimationName("clapping")}>
                   <h3 className="text-2xl font-semibold text-blue-400">
                     💬 LinkLine Chat App
                   </h3>
@@ -57,7 +73,7 @@ const Work = () => {
                   </p>
                 </div>
 
-                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition">
+                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition cursor-pointer" onClick={() => setAnimationName("victory")}>
                   <h3 className="text-2xl font-semibold text-green-400">
                     🏫 College Pulse
                   </h3>
@@ -68,7 +84,7 @@ const Work = () => {
                   </p>
                 </div>
 
-                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition">
+                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition cursor-pointer" onClick={() => setAnimationName("salute")}>
                   <h3 className="text-2xl font-semibold text-yellow-400">
                     🧠 AI-Powered ToDo
                   </h3>
@@ -79,7 +95,7 @@ const Work = () => {
                   </p>
                 </div>
 
-                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition">
+                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition cursor-pointer" onClick={() => setAnimationName("clapping")}>
                   <h3 className="text-2xl font-semibold text-cyan-400">
                     📚 AI Learning Hub
                   </h3>
@@ -90,7 +106,7 @@ const Work = () => {
                   </p>
                 </div>
 
-                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition">
+                <div className="bg-zinc-700/60 rounded-xl p-4 hover:bg-zinc-700 transition cursor-pointer" onClick={() => setAnimationName("victory")}>
                   <h3 className="text-2xl font-semibold text-rose-400">
                     🎤 AI Voice Interview
                   </h3>
@@ -103,8 +119,8 @@ const Work = () => {
               </div>
 
               <p className="text-sm text-gray-400 pt-5">
-                Built with passion by Vivek — always learning, always
-                building 🚀
+                Built with passion by Vivek — always learning, always building
+                🚀
               </p>
             </div>
           </div>
